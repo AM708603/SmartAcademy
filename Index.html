@@ -280,7 +280,7 @@ $('#lobby').style.display='none';$('#room').style.display='block';$('#rt').textC
 try{local=await navigator.mediaDevices.getUserMedia({video:{width:640,height:480},audio:true})}catch(e){toast('Camera or mic unavailable – you joined as a viewer')}
 tile('me',me.n,true);paint();
 let rm=null;try{rm=await claude.use('room')}catch(e){}
-if(!rm){$('#rs').textContent='Preview mode – open the shared link in claude.ai to connect with others';return}
+if(!rm){$('#rs').textContent='';return}
 try{R=await rm.join('sa-'+me.code)}catch(e){$('#rs').textContent='Could not open the class room';return}
 $('#rs').textContent='Connected · waiting for others';
 R.onPeers(ch=>{peerList=ch.peers;const m=ch.peers.find(p=>p.isMe&&p.sameTab);if(m)myPeer=m.peer;
